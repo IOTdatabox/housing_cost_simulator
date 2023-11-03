@@ -182,7 +182,7 @@ const Home: React.FC = () => {
               />
             </div>
             <div className='mx-auto'>
-              <CalcButton children={'計算'} onClick={() => {
+              <CalcButton onClick={() => {
 
                 const repaymonthly = calculateRepayMonthly(incomeannual, incomefamily, repaypercent);
                 const pv = calculatePV(repaymonthly, interestrate, repayperiod);
