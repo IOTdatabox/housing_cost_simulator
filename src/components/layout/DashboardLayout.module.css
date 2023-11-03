@@ -1,0 +1,16 @@
+.fullWidth {
+    color: black;
+    background: #FFFFFF;
+    height: 100vh;
+  }
+  
+  .logoRow {
+    padding: 28px 64px 36px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .nav {
+    border-bottom: 1px solid #EAECF0;
+    padding: 0 36px;
+  }
