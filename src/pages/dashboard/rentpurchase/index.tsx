@@ -103,7 +103,7 @@ const Home: React.FC = () => {
     //   },
     //   // Make sure to define the categories if you have specific labels for each point on the x-axis.
     //   categories: agearray,
-    // },   
+    // },
     xaxis: {
       type: 'category',
       tickPlacement: 'between',
