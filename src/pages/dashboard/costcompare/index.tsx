@@ -34,7 +34,10 @@ const Home: React.FC = () => {
 
   const chartoptions: ApexOptions = {
     chart: {
-      type: 'bar'
+      type: 'bar',
+      toolbar: {
+        show: false
+      }
     },
     series: [{
       data: [{
