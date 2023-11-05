@@ -9,7 +9,7 @@ export function DashboardLayout({
   children: React.ReactNode;
 }) {
   const navUrls = ["costcompare", "rentpurchase", "view-participants", "connections"];
-  const navNames = ["購入可能額", "賃貸VS購入", "もう一つ", "もう一つ"];
+  const navNames = ["購入可能額", "賃貸VS購入", "もう", "もう一つ"];
 
   return (
     <div className={styles.fullWidth}>

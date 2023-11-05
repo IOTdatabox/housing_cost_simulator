@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import UnitLabel from './UnitLabel';
 
-interface SpinBoxProps {
+interface AgeSpinBoxProps {
     min?: number;
     max?: number;
     step?: number;
@@ -11,7 +11,7 @@ interface SpinBoxProps {
     onChange?: (value: number) => void;
 }
 
-const SpinBox: React.FC<SpinBoxProps> = ({
+const AgeSpinBox: React.FC<AgeSpinBoxProps> = ({
     min = Number.MIN_SAFE_INTEGER,
     max = Number.MAX_SAFE_INTEGER,
     step = 1,
@@ -60,7 +60,7 @@ const SpinBox: React.FC<SpinBoxProps> = ({
                 min={min}
                 max={max}
                 step={step}
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[120px] p-1"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[60px] p-1"
                 style={{ textAlign: 'center', fontSize: 30 }}
             />
             {/* <span className='whitespace-nowrap'> {unit}</span> */}
@@ -69,4 +69,4 @@ const SpinBox: React.FC<SpinBoxProps> = ({
     );
 };
 
-export default SpinBox;
+export default AgeSpinBox;
