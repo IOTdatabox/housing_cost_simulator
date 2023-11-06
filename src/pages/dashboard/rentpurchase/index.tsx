@@ -50,7 +50,7 @@ const Home: React.FC = () => {
     const RepayMonthlyForBuy = calculateRepayMonthlyForBuy(interestrate, repayperiod, downprice, propertyprice);
     const ACCBuyPayment = calculateACCBuyPayment(firstage, RepayMonthlyForBuy, maintenancecost);
     const AgeArray = GenerateAgeArray(firstage);
-    const difference = ACCRentalPayment[ACCRentalPayment.length-1] - ACCBuyPayment[ACCBuyPayment.length-1];
+    const difference = ACCRentalPayment[ACCRentalPayment.length - 1] - ACCBuyPayment[ACCBuyPayment.length - 1];
 
     setACCRental(ACCRentalPayment);
     setRepayMonthlyForBuy(RepayMonthlyForBuy);
@@ -289,13 +289,18 @@ const Home: React.FC = () => {
               const RepayMonthlyForBuy = calculateRepayMonthlyForBuy(interestrate, repayperiod, downprice, propertyprice);
               const ACCBuyPayment = calculateACCBuyPayment(firstage, RepayMonthlyForBuy, maintenancecost);
               const AgeArray = GenerateAgeArray(firstage);
-              const difference = ACCRentalPayment[ACCRentalPayment.length-1] - ACCBuyPayment[ACCBuyPayment.length-1];
+              const difference = ACCRentalPayment[ACCRentalPayment.length - 1] - ACCBuyPayment[ACCBuyPayment.length - 1];
 
               setACCRental(ACCRentalPayment);
               setRepayMonthlyForBuy(RepayMonthlyForBuy);
               setACCBuy(ACCBuyPayment);
               setAgeArray(AgeArray);
               setDifference(difference);
+
+              console.log("firstage", firstage);
+              console.log("ACCRentalPayment", accrental);
+              console.log("RepayMonthlyForBuy", RepayMonthlyForBuy);
+              console.log("ACCBuyPayment", accbuy);
 
             }} />
           </div>

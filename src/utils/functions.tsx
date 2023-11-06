@@ -76,18 +76,17 @@ export function calculateRepayMonthlyForBuy(interestrate: number, repayperiod: n
   
   if (!endOrBeginning) {
     pmt /= (1 + adjustedRate);
-  }
-  
-  return -pmt;
+  }  return -pmt;
 }
 
 export function calculateACCBuyPayment(firstage: number, repaymonthlyforbuy: number, maintenancecost: number): number[] {
   const buyPayments: number[] = [];
   let accumulated = 0;
   const repayworkingage = repaymonthlyforbuy*12 + maintenancecost;
+
   const repayplayingage = 20;
   for(let age = firstage; age <= 85; age++) {
-    if (age >= firstage && age <= 67) {
+    if (age >= firstage && age < 67) {
       accumulated += repayworkingage;
     } else {
       accumulated += repayplayingage;
