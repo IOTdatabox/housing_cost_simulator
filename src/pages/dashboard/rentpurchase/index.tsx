@@ -41,6 +41,8 @@ const Home: React.FC = () => {
 
   const [agearray, setAgeArray] = useState<number[]>([20, 30]);
 
+  const [difference, setDifference] = useState(0);
+
 
   useEffect(() => {
 
@@ -48,13 +50,13 @@ const Home: React.FC = () => {
     const RepayMonthlyForBuy = calculateRepayMonthlyForBuy(interestrate, repayperiod, downprice, propertyprice);
     const ACCBuyPayment = calculateACCBuyPayment(firstage, RepayMonthlyForBuy, maintenancecost);
     const AgeArray = GenerateAgeArray(firstage);
+    const difference = ACCRentalPayment[ACCRentalPayment.length-1] - ACCBuyPayment[ACCBuyPayment.length-1];
 
     setACCRental(ACCRentalPayment);
     setRepayMonthlyForBuy(RepayMonthlyForBuy);
     setACCBuy(ACCBuyPayment);
     setAgeArray(AgeArray);
-
-
+    setDifference(difference);
 
     console.log("firstage", firstage);
     console.log("ACCRentalPayment", accrental);
@@ -287,13 +289,24 @@ const Home: React.FC = () => {
               const RepayMonthlyForBuy = calculateRepayMonthlyForBuy(interestrate, repayperiod, downprice, propertyprice);
               const ACCBuyPayment = calculateACCBuyPayment(firstage, RepayMonthlyForBuy, maintenancecost);
               const AgeArray = GenerateAgeArray(firstage);
+              const difference = ACCRentalPayment[ACCRentalPayment.length-1] - ACCBuyPayment[ACCBuyPayment.length-1];
 
               setACCRental(ACCRentalPayment);
               setRepayMonthlyForBuy(RepayMonthlyForBuy);
               setACCBuy(ACCBuyPayment);
               setAgeArray(AgeArray);
+              setDifference(difference);
 
             }} />
+          </div>
+        </div>
+
+        <div className="col-span-6  mx-auto">
+          <div className='mx-auto'>
+            <div>
+              総住居費は、持ち家の方が家賃より
+              <p className='text-[25px] text-red-400'>{difference}万円安くなります</p>
+            </div>
           </div>
         </div>
       </div>
