@@ -20,12 +20,12 @@ const Home: React.FC = () => {
 
   const [incomeannual, setIncomeAnnual] = useState(600)
   const [incomefamily, setIncomeFamily] = useState(150)
-  const [repaypercent, setRepayPercent] = useState(40)
+  const [repaypercent, setRepayPercent] = useState(35)
   const [interestrate, setInterestRate] = useState(3.5)
 
-  const [repayeasily, setRepayEasily] = useState(10)
+  const [repayeasily, setRepayEasily] = useState(12)
   const [repayextra, setRepayExtra] = useState(10)
-  const [loadrate, setLoanRate] = useState(1)
+  const [loanrate, setLoanRate] = useState(1)
 
   const [repayperiod, setRepayPeriod] = useState(35)
 
@@ -64,7 +64,7 @@ const Home: React.FC = () => {
     setRepayAmount(repayamount)
 
     const repaymonthlyeasily = calculateRepayMonthlyEasily(repayeasily, repayextra);
-    const pveasily = calculatePV(repaymonthlyeasily, loadrate, repayperiod);
+    const pveasily = calculatePV(repaymonthlyeasily, loanrate, repayperiod);
     const repayamounteasily = calculatePurchaseAmount(pveasily);
     setRepayAmounteasily(repayamounteasily)
   }, [])
@@ -83,9 +83,9 @@ const Home: React.FC = () => {
             <SpinBox
               min={0}
               max={100000}
-              step={1}
+              step={0.1}
               unit={"万円"}
-              defaultValue={600}
+              defaultValue={incomeannual}
               onChange={setIncomeAnnual}
             />
           </div>
@@ -94,8 +94,8 @@ const Home: React.FC = () => {
             <SpinBox
               min={0}
               max={100000}
-              step={1}
-              defaultValue={150}
+              step={0.1}
+              defaultValue={incomefamily}
               unit={'万円'}
               onChange={setIncomeFamily}
             />
@@ -105,8 +105,8 @@ const Home: React.FC = () => {
             <SpinBox
               min={0}
               max={100}
-              step={1}
-              defaultValue={40}
+              step={0.1}
+              defaultValue={repaypercent}
               unit={'%'}
               onChange={setRepayPercent}
             />
@@ -116,8 +116,8 @@ const Home: React.FC = () => {
             <SpinBox
               min={0}
               max={10}
-              step={1}
-              defaultValue={3.5}
+              step={0.1}
+              defaultValue={interestrate}
               unit={'%'}
               onChange={setInterestRate}
             />
@@ -132,9 +132,9 @@ const Home: React.FC = () => {
             <SpinBox
               min={0}
               max={100000}
-              step={1}
+              step={0.1}
               unit={"万円"}
-              defaultValue={10}
+              defaultValue={repayeasily}
               onChange={setRepayEasily}
             />
           </div>
@@ -143,9 +143,9 @@ const Home: React.FC = () => {
             <SpinBox
               min={0}
               max={100000}
-              step={1}
+              step={0.1}
               unit={"万円"}
-              defaultValue={10}
+              defaultValue={repayextra}
               onChange={setRepayExtra}
             />
           </div>
@@ -154,9 +154,9 @@ const Home: React.FC = () => {
             <SpinBox
               min={0}
               max={100}
-              step={1}
+              step={0.1}
               unit={"%"}
-              defaultValue={1}
+              defaultValue={loanrate}
               onChange={setLoanRate}
             />
           </div>
@@ -180,7 +180,7 @@ const Home: React.FC = () => {
                 max={100}
                 step={1}
                 unit={"年"}
-                defaultValue={35}
+                defaultValue={repayperiod}
                 onChange={setRepayPeriod}
               />
             </div>
@@ -193,7 +193,7 @@ const Home: React.FC = () => {
                 setRepayAmount(repayamount)
 
                 const repaymonthlyeasily = calculateRepayMonthlyEasily(repayeasily, repayextra);
-                const pveasily = calculatePV(repaymonthlyeasily, loadrate, repayperiod);
+                const pveasily = calculatePV(repaymonthlyeasily, loanrate, repayperiod);
                 const repayamounteasily = calculatePurchaseAmount(pveasily);
                 setRepayAmounteasily(repayamounteasily)
 

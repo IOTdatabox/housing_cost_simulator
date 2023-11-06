@@ -20,10 +20,10 @@ const Home: React.FC = () => {
 
   const [incomeannual, setIncomeAnnual] = useState(600)
   const [incomefamily, setIncomeFamily] = useState(150)
-  const [repaypercent, setRepayPercent] = useState(40)
+  const [repaypercent, setRepayPercent] = useState(35)
   const [interestrate, setInterestRate] = useState(3.5)
 
-  const [repayeasily, setRepayEasily] = useState(10)
+  const [repayeasily, setRepayEasily] = useState(12)
   const [repayextra, setRepayExtra] = useState(10)
   const [loadrate, setLoanRate] = useState(1)
 
@@ -34,7 +34,10 @@ const Home: React.FC = () => {
 
   const chartoptions: ApexOptions = {
     chart: {
-      type: 'bar'
+      type: 'bar',
+      toolbar: {
+        show: false
+      }
     },
     series: [{
       data: [{
@@ -80,7 +83,7 @@ const Home: React.FC = () => {
             <SpinBox
               min={0}
               max={100000}
-              step={1}
+              step={0.1}
               unit={"万円"}
               defaultValue={600}
               onChange={setIncomeAnnual}
@@ -91,7 +94,7 @@ const Home: React.FC = () => {
             <SpinBox
               min={0}
               max={100000}
-              step={1}
+              step={0.1}
               defaultValue={150}
               unit={'万円'}
               onChange={setIncomeFamily}
@@ -102,8 +105,8 @@ const Home: React.FC = () => {
             <SpinBox
               min={0}
               max={100}
-              step={1}
-              defaultValue={40}
+              step={0.1}
+              defaultValue={repaypercent}
               unit={'%'}
               onChange={setRepayPercent}
             />
@@ -113,7 +116,7 @@ const Home: React.FC = () => {
             <SpinBox
               min={0}
               max={10}
-              step={1}
+              step={0.1}
               defaultValue={3.5}
               unit={'%'}
               onChange={setInterestRate}
@@ -129,9 +132,9 @@ const Home: React.FC = () => {
             <SpinBox
               min={0}
               max={100000}
-              step={1}
+              step={0.1}
               unit={"万円"}
-              defaultValue={10}
+              defaultValue={12}
               onChange={setRepayEasily}
             />
           </div>
@@ -140,7 +143,7 @@ const Home: React.FC = () => {
             <SpinBox
               min={0}
               max={100000}
-              step={1}
+              step={0.1}
               unit={"万円"}
               defaultValue={10}
               onChange={setRepayExtra}
@@ -151,7 +154,7 @@ const Home: React.FC = () => {
             <SpinBox
               min={0}
               max={100}
-              step={1}
+              step={0.1}
               unit={"%"}
               defaultValue={1}
               onChange={setLoanRate}

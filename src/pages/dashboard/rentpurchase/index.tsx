@@ -28,12 +28,12 @@ const Home: React.FC = () => {
   const [secondrent, setSecondRent] = useState(14)
   const [thirdrent, setThirdRent] = useState(20)
 
-  const [propertyprice, setPropertyPrice] = useState(5000);
+  const [propertyprice, setPropertyPrice] = useState(4500);
   const [downprice, setDownPrice] = useState(300);
 
   const [repayperiod, setRepayPeriod] = useState(35)
   const [interestrate, setInterestRate] = useState(1)
-  const [maintenancecost, setMaintenanceCost] = useState(20);
+  const [maintenancecost, setMaintenanceCost] = useState(25);
 
   const [repaymonthlyforbuy, setRepayMonthlyForBuy] = useState(0);
   const [accrental, setACCRental] = useState<number[]>([10, 20]);
@@ -120,7 +120,7 @@ const Home: React.FC = () => {
 
   return (
     <DashboardLayout>
-      <div className='grid grid-cols-11 gap-4 content-start pt-4'>
+      <div className='grid grid-cols-10 gap-4 content-start pt-4'>
         <div className='col-span-3 px-5 text-center pt-2 text-[25px]'>
           <div className='pb-5'>
             ずっと賃貸生活の場合
@@ -135,7 +135,7 @@ const Home: React.FC = () => {
                   max={100}
                   step={1}
                   unit={"歳"}
-                  defaultValue={32}
+                  defaultValue={firstage}
                   onChange={setFristAge}
                 />
                 <p>~</p>
@@ -144,7 +144,7 @@ const Home: React.FC = () => {
                   max={100}
                   step={1}
                   unit={"歳"}
-                  defaultValue={39}
+                  defaultValue={secondage}
                   onChange={setSecondAge}
                 />
               </div>
@@ -157,7 +157,7 @@ const Home: React.FC = () => {
                   max={100}
                   step={1}
                   unit={"歳"}
-                  defaultValue={49}
+                  defaultValue={thirdage}
                   onChange={setThirdAge}
                 />
               </div>
@@ -172,9 +172,9 @@ const Home: React.FC = () => {
                 <SpinBox
                   min={0}
                   max={100000}
-                  step={1}
+                  step={0.1}
                   unit={"万円／月"}
-                  defaultValue={12}
+                  defaultValue={firstrent}
                   onChange={setFristRent}
                 />
               </div>
@@ -182,9 +182,9 @@ const Home: React.FC = () => {
                 <SpinBox
                   min={0}
                   max={100000}
-                  step={1}
+                  step={0.1}
                   unit={"万円／月"}
-                  defaultValue={14}
+                  defaultValue={secondrent}
                   onChange={setSecondRent}
                 />
               </div>
@@ -192,9 +192,9 @@ const Home: React.FC = () => {
                 <SpinBox
                   min={0}
                   max={100000}
-                  step={1}
+                  step={0.1}
                   unit={"万円／月"}
-                  defaultValue={20}
+                  defaultValue={thirdrent}
                   onChange={setThirdRent}
                 />
               </div>
@@ -211,9 +211,9 @@ const Home: React.FC = () => {
             <SpinBox
               min={0}
               max={100000}
-              step={1}
+              step={0.1}
               unit={"万円"}
-              defaultValue={5000}
+              defaultValue={propertyprice}
               onChange={setPropertyPrice}
             />
           </div>
@@ -222,9 +222,9 @@ const Home: React.FC = () => {
             <SpinBox
               min={0}
               max={100000}
-              step={1}
+              step={0.1}
               unit={"万円"}
-              defaultValue={300}
+              defaultValue={downprice}
               onChange={setDownPrice}
             />
           </div>
@@ -235,7 +235,7 @@ const Home: React.FC = () => {
               max={100}
               step={1}
               unit={"年"}
-              defaultValue={35}
+              defaultValue={repayperiod}
               onChange={setRepayPeriod}
             />
           </div>
@@ -244,9 +244,9 @@ const Home: React.FC = () => {
             <SpinBox
               min={0}
               max={100}
-              step={1}
+              step={0.1}
               unit={"%"}
-              defaultValue={1}
+              defaultValue={interestrate}
               onChange={setInterestRate}
             />
           </div>
@@ -257,7 +257,7 @@ const Home: React.FC = () => {
               max={100}
               step={1}
               unit={"万円／年"}
-              defaultValue={20}
+              defaultValue={maintenancecost}
               onChange={setMaintenanceCost}
             />
           </div>
@@ -268,16 +268,35 @@ const Home: React.FC = () => {
               max={100}
               step={1}
               unit={"年後"}
-              defaultValue={10}
+              defaultValue={repaymonthlyforbuy}
               onChange={setRepayMonthlyForBuy}
             />
           </div>
         </div>
 
-        <div className='col-span-5 pt-10'>{
+        <div className='col-span-4 pt-10'>{
           (typeof window !== 'undefined')
           && <Chart options={chartoptions} series={chartoptions.series} type="line" height={350} />
+
         }
+
+          <div className='mx-auto'>
+            <div className='grid grid-cols-2 gap-4 content-start pt-10 ml-5'>
+              <div>
+                賃貸
+                <p className='text-[25px] text-red-400'>{accrental[accrental.length - 1]}万</p>
+              </div>
+              <div>
+                持ち家
+                <p className='text-[25px] text-red-400'>{accbuy[accrental.length - 1]}万</p>
+              </div>
+            </div>
+            <div className='ml-5'>
+              総住居費は、持ち家の方が家賃より
+              <p className='text-[25px] text-red-400'>{difference}万円安くなります</p>
+            </div>
+          </div>
+
         </div>
 
         <div className="col-span-5  mx-auto">
@@ -306,14 +325,7 @@ const Home: React.FC = () => {
           </div>
         </div>
 
-        <div className="col-span-6  mx-auto">
-          <div className='mx-auto'>
-            <div>
-              総住居費は、持ち家の方が家賃より
-              <p className='text-[25px] text-red-400'>{difference}万円安くなります</p>
-            </div>
-          </div>
-        </div>
+
       </div>
 
     </ DashboardLayout >

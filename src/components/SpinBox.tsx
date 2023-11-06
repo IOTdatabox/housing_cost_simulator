@@ -1,4 +1,3 @@
-// SpinBox.tsx
 import React, { useState } from 'react';
 import UnitLabel from './UnitLabel';
 
@@ -14,37 +13,15 @@ interface SpinBoxProps {
 const SpinBox: React.FC<SpinBoxProps> = ({
     min = Number.MIN_SAFE_INTEGER,
     max = Number.MAX_SAFE_INTEGER,
-    step = 1,
+    step = 0.01, // Default step changed to accommodate decimals
     unit,
     defaultValue = 0,
     onChange,
 }) => {
     const [value, setValue] = useState<number>(defaultValue);
 
-    const handleIncrement = () => {
-        setValue((prevValue) => {
-            const newValue = prevValue + step;
-            if (newValue <= max) {
-                onChange?.(newValue);
-                return newValue;
-            }
-            return prevValue;
-        });
-    };
-
-    const handleDecrement = () => {
-        setValue((prevValue) => {
-            const newValue = prevValue - step;
-            if (newValue >= min) {
-                onChange?.(newValue);
-                return newValue;
-            }
-            return prevValue;
-        });
-    };
-
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const newValue = parseInt(event.target.value, 10);
+        const newValue = parseFloat(event.target.value);
         if (!isNaN(newValue) && newValue >= min && newValue <= max) {
             setValue(newValue);
             onChange?.(newValue);
@@ -65,7 +42,7 @@ const SpinBox: React.FC<SpinBoxProps> = ({
             />
             {/* <span className='whitespace-nowrap'> {unit}</span> */}
             <UnitLabel text={unit} />
-        </div >
+        </div>
     );
 };
 
