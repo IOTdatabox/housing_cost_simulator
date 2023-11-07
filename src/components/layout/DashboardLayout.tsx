@@ -8,8 +8,8 @@ export function DashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const navUrls = ["costcompare", "rentpurchase", "view-participants", "connections"];
-  const navNames = ["購入可能額", "賃貸VS購入", "もう", "もう一つ"];
+  const navUrls = ["costcompare", "rentpurchase"];
+  const navNames = ["購入可能額", "賃貸VS購入"];
 
   return (
     <div className={styles.fullWidth}>
