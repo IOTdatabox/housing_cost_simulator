@@ -15,7 +15,7 @@ export function DashboardLayout({
     <div className={styles.fullWidth}>
       <header>
         <div className={styles.logoRow}>
-          <Image src="/NakedLogo.png" width={100} height={64.34} alt="WOW"></Image>
+          {/* <Image src="/NakedLogo.png" width={100} height={64.34} alt="WOW"></Image> */}
           {/* <UserButton afterSignOutUrl="/sign-in" /> */}
         </div>
 
