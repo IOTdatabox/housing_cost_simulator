@@ -92,20 +92,6 @@ const Home: React.FC = () => {
         // data: accrental
       },
     ],
-    // xaxis: {
-    //   labels: {
-    //     formatter: function(val, index) {
-    //       // If index is undefined, or is not even, return an empty string.
-    //       if (index === undefined || index % 2 !== 0) {
-    //         return '';
-    //       }
-    //       // Otherwise, return the value.
-    //       return val;
-    //     }
-    //   },
-    //   // Make sure to define the categories if you have specific labels for each point on the x-axis.
-    //   categories: agearray,
-    // },
     xaxis: {
       type: 'category',
       tickPlacement: 'between',
