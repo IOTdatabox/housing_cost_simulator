@@ -121,187 +121,152 @@ const Home: React.FC = () => {
   return (
     <DashboardLayout>
       <div className='grid grid-cols-10 gap-4 content-start pt-4'>
-        <div className='col-span-3 px-5 text-center pt-2 text-[25px]'>
-          <div className='pb-5'>
-            ずっと賃貸生活の場合
-          </div>
-          <div className='grid grid-cols-2 gap-4 content-start pt-4'>
+        <div className='col-span-6 px-5 text-center pt-2 text-[25px]'>
+          <div className='grid grid-cols-2 gap-2 content-start'>
+            <div>
+              <div className='pb-5'>
+                ずっと賃貸生活の場合
+              </div>
+              <div className='grid grid-cols-2 gap-4 content-start pt-4'>
 
-            <div className='px-5 text-center pt-2 text-[25px]'>
-              <ExplainLabel text={"年齢区分"} />
-              <div className='flex justify-between items-center pt-5'>
-                <AgeSpinBox
-                  min={0}
-                  max={100}
-                  step={1}
-                  unit={"歳"}
-                  defaultValue={firstage}
-                  onChange={setFristAge}
-                />
-                <p>~</p>
-                <AgeSpinBox
-                  min={0}
-                  max={100}
-                  step={1}
-                  unit={"歳"}
-                  defaultValue={secondage}
-                  onChange={setSecondAge}
-                />
-              </div>
-              <div className='flex justify-between items-center pt-5'>
-                <NumberLabel text={(secondage + 1).toString()} />
-                <p className=' ml-10 text-[20px]'>歳</p>
-                <p className='ml-3'>~</p>
-                <AgeSpinBox
-                  min={0}
-                  max={100}
-                  step={1}
-                  unit={"歳"}
-                  defaultValue={thirdage}
-                  onChange={setThirdAge}
-                />
-              </div>
-              <div className='flex justify-between items-center pt-5'>
-                <NumberLabel text={(thirdage + 1).toString()} />
-                <p className=' ml-10 text-[20px]'>歳以降</p>
+                <div className='px-5 text-center pt-2 text-[25px]'>
+                  <ExplainLabel text={"年齢区分"} />
+                  <div className='flex justify-between items-center pt-5'>
+                    <AgeSpinBox
+                      min={0}
+                      max={100}
+                      step={1}
+                      unit={"歳"}
+                      defaultValue={firstage}
+                      onChange={setFristAge}
+                    />
+                    <p>~</p>
+                    <AgeSpinBox
+                      min={0}
+                      max={100}
+                      step={1}
+                      unit={"歳"}
+                      defaultValue={secondage}
+                      onChange={setSecondAge}
+                    />
+                  </div>
+                  <div className='flex justify-between items-center pt-5'>
+                    <NumberLabel text={(secondage + 1).toString()} />
+                    <p className=' ml-10 text-[20px]'>歳</p>
+                    <p className='ml-3'>~</p>
+                    <AgeSpinBox
+                      min={0}
+                      max={100}
+                      step={1}
+                      unit={"歳"}
+                      defaultValue={thirdage}
+                      onChange={setThirdAge}
+                    />
+                  </div>
+                  <div className='flex justify-between items-center pt-5'>
+                    <NumberLabel text={(thirdage + 1).toString()} />
+                    <p className=' ml-10 text-[20px]'>歳以降</p>
+                  </div>
+                </div>
+                <div className='px-5 text-center pt-2 text-[25px]'>
+                  <ExplainLabel text={"家賃月額"} />
+                  <div className='flex justify-between items-center pt-5'>
+                    <SpinBox
+                      min={0}
+                      max={100000}
+                      step={0.1}
+                      unit={"万円／月"}
+                      defaultValue={firstrent}
+                      onChange={setFristRent}
+                    />
+                  </div>
+                  <div className='flex justify-between items-center pt-5'>
+                    <SpinBox
+                      min={0}
+                      max={100000}
+                      step={0.1}
+                      unit={"万円／月"}
+                      defaultValue={secondrent}
+                      onChange={setSecondRent}
+                    />
+                  </div>
+                  <div className='flex justify-between items-center pt-5'>
+                    <SpinBox
+                      min={0}
+                      max={100000}
+                      step={0.1}
+                      unit={"万円／月"}
+                      defaultValue={thirdrent}
+                      onChange={setThirdRent}
+                    />
+                  </div>
+                </div>
+
               </div>
             </div>
-            <div className='px-5 text-center pt-2 text-[25px]'>
-              <ExplainLabel text={"家賃月額"} />
+            <div>
+              <div className='pb-5'>
+                持ち家購入の場合
+              </div>
               <div className='flex justify-between items-center pt-5'>
+                <ExplainLabel text={"物件価格は？"} />
                 <SpinBox
                   min={0}
                   max={100000}
                   step={0.1}
-                  unit={"万円／月"}
-                  defaultValue={firstrent}
-                  onChange={setFristRent}
+                  unit={"万円"}
+                  defaultValue={propertyprice}
+                  onChange={setPropertyPrice}
                 />
               </div>
               <div className='flex justify-between items-center pt-5'>
+                <ExplainLabel text={"頭金は？"} />
                 <SpinBox
                   min={0}
                   max={100000}
                   step={0.1}
-                  unit={"万円／月"}
-                  defaultValue={secondrent}
-                  onChange={setSecondRent}
+                  unit={"万円"}
+                  defaultValue={downprice}
+                  onChange={setDownPrice}
                 />
               </div>
               <div className='flex justify-between items-center pt-5'>
+                <ExplainLabel text={"ローン返済期間は？"} />
                 <SpinBox
                   min={0}
-                  max={100000}
+                  max={100}
+                  step={1}
+                  unit={"年"}
+                  defaultValue={repayperiod}
+                  onChange={setRepayPeriod}
+                />
+              </div>
+              <div className='flex justify-between items-center pt-5'>
+                <ExplainLabel text={"ローン金利は？"} />
+                <SpinBox
+                  min={0}
+                  max={100}
                   step={0.1}
-                  unit={"万円／月"}
-                  defaultValue={thirdrent}
-                  onChange={setThirdRent}
+                  unit={"%"}
+                  defaultValue={interestrate}
+                  onChange={setInterestRate}
+                />
+              </div>
+              <div className='flex justify-between items-center pt-5'>
+                <ExplainLabel text={"固定資産税・維持費は？"} />
+                <SpinBox
+                  min={0}
+                  max={100}
+                  step={1}
+                  unit={"万円／年"}
+                  defaultValue={maintenancecost}
+                  onChange={setMaintenanceCost}
                 />
               </div>
             </div>
-
-          </div>
-        </div>
-        <div className=' col-span-3 px-5 text-center pt-2 text-[25px]'>
-          <div className='pb-5'>
-            持ち家購入の場合
-          </div>
-          <div className='flex justify-between items-center pt-5'>
-            <ExplainLabel text={"物件価格は？"} />
-            <SpinBox
-              min={0}
-              max={100000}
-              step={0.1}
-              unit={"万円"}
-              defaultValue={propertyprice}
-              onChange={setPropertyPrice}
-            />
-          </div>
-          <div className='flex justify-between items-center pt-5'>
-            <ExplainLabel text={"頭金は？"} />
-            <SpinBox
-              min={0}
-              max={100000}
-              step={0.1}
-              unit={"万円"}
-              defaultValue={downprice}
-              onChange={setDownPrice}
-            />
-          </div>
-          <div className='flex justify-between items-center pt-5'>
-            <ExplainLabel text={"ローン返済期間は？"} />
-            <SpinBox
-              min={0}
-              max={100}
-              step={1}
-              unit={"年"}
-              defaultValue={repayperiod}
-              onChange={setRepayPeriod}
-            />
-          </div>
-          <div className='flex justify-between items-center pt-5'>
-            <ExplainLabel text={"ローン金利は？"} />
-            <SpinBox
-              min={0}
-              max={100}
-              step={0.1}
-              unit={"%"}
-              defaultValue={interestrate}
-              onChange={setInterestRate}
-            />
-          </div>
-          <div className='flex justify-between items-center pt-5'>
-            <ExplainLabel text={"固定資産税・維持費は？"} />
-            <SpinBox
-              min={0}
-              max={100}
-              step={1}
-              unit={"万円／年"}
-              defaultValue={maintenancecost}
-              onChange={setMaintenanceCost}
-            />
-          </div>
-          <div className='flex justify-between items-center pt-5'>
-            <ExplainLabel text={"もし、お借り入れご本人に万が一（死亡・高度障害）の事があったら？"} />
-            <SpinBox
-              min={0}
-              max={100}
-              step={1}
-              unit={"年後"}
-              defaultValue={repaymonthlyforbuy}
-              onChange={setRepayMonthlyForBuy}
-            />
-          </div>
-        </div>
-
-        <div className='col-span-4 pt-10'>{
-          (typeof window !== 'undefined')
-          && <Chart options={chartoptions} series={chartoptions.series} type="line" height={350} />
-
-        }
-
-          <div className='mx-auto'>
-            <div className='grid grid-cols-2 gap-4 content-start pt-10 ml-5'>
-              <div>
-                賃貸
-                <p className='text-[25px] text-red-400'>{accrental[accrental.length - 1]}万</p>
-              </div>
-              <div>
-                持ち家
-                <p className='text-[25px] text-red-400'>{accbuy[accrental.length - 1]}万</p>
-              </div>
-            </div>
-            <div className='ml-5'>
-              総住居費は、持ち家の方が家賃より
-              <p className='text-[25px] text-red-400'>{difference}万円安くなります</p>
-            </div>
           </div>
 
-        </div>
-
-        <div className="col-span-5  mx-auto">
-
-          <div className='mx-auto'>
+          <div className='mx-auto mt-10'>
             <CalcButton onClick={() => {
 
               const ACCRentalPayment = calculateACCRentalPayment(firstage, secondage, thirdage, firstrent, secondrent, thirdrent);
@@ -324,6 +289,33 @@ const Home: React.FC = () => {
             }} />
           </div>
         </div>
+
+        <div className='col-span-4 pt-10 px-5'>{
+          (typeof window !== 'undefined')
+          && <Chart options={chartoptions} series={chartoptions.series} type="line" height={350} />
+
+        }
+
+          <div className='mx-auto'>
+            <div className='grid grid-cols-2 gap-4 content-start pt-10 ml-5'>
+              <div>
+                賃貸
+                <p className='text-[25px] text-red-400'>{accrental[accrental.length - 1]}万</p>
+              </div>
+              <div>
+                持ち家
+                <p className='text-[25px] text-red-400'>{accbuy[accrental.length - 1]}万</p>
+              </div>
+            </div>
+            <div className='ml-5 mt-5'>
+              総住居費は、持ち家の方が家賃より
+              <p className='text-[25px] text-red-400'>{difference}万円安くなります</p>
+            </div>
+          </div>
+
+        </div>
+
+
 
 
       </div>
